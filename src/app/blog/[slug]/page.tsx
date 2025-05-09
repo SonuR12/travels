@@ -81,11 +81,13 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPostPage({
-  params,
-}: {
+interface BlogPostPageProps {
   params: { slug: string };
-}) {
+}
+
+export default async function BlogPostPage({
+  params,
+}: BlogPostPageProps) {
   const post = getPostBySlug(params.slug);
 
   if (!post) {
