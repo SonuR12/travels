@@ -15,7 +15,7 @@ interface SuccessModalProps {
   };
 }
 
-export default function SuccessModal({ open, onClose, data }: SuccessModalProps) {
+export default function SuccessModal({ open, onClose}: SuccessModalProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="text-center flex flex-col items-center justify-center gap-2">
@@ -29,7 +29,7 @@ export default function SuccessModal({ open, onClose, data }: SuccessModalProps)
         </DialogHeader>
 
         <p className="text-muted-foreground text-sm text-center">
-          We've received your message and will respond shortly 😊
+          We&apos;ve received your message and will respond shortly 😊
         </p>
       </DialogContent>
     </Dialog>
