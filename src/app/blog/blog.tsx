@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -50,8 +50,9 @@ export default function BlogPage() {
       setIsLoading(false);
     }, 500);
 
-    return () => clearTimeout(timer); // Cleanup timer
-  }, []);
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array ensures this runs only once
 
   if (isLoading) {
     // Show the Loader component while loading
@@ -64,64 +65,64 @@ export default function BlogPage() {
 
   return (
     <>
-    <main className="px-4 md:px-12 bg-gray-50 py-20 min-h-screen">
-      {/* Hero */}
-      <section className="text-left mb-12">
-        <h1 className="text-4xl font-bold text-cyan-700">Bae Travels Blog</h1>
-        <p className="mt-4 text-gray-600 max-w-xl">
-          Dive into inspiring stories, travel tips, and cultural discoveries
-          from across India. Your next adventure starts here.
-        </p>
-      </section>
+      <main className="px-4 md:px-12 bg-gray-50 py-20 min-h-screen">
+        {/* Hero */}
+        <section className="text-left mb-12">
+          <h1 className="text-4xl font-bold text-cyan-700">Bae Travels Blog</h1>
+          <p className="mt-4 text-gray-600 max-w-xl">
+            Dive into inspiring stories, travel tips, and cultural discoveries
+            from across India. Your next adventure starts here.
+          </p>
+        </section>
 
-      {/* Blog Grid */}
-      <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <Card
-            key={post.slug}
-            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow  border border-gray-200 duration-300 overflow-hidden p-0"
-          >
-            <div className="relative h-60 w-full">
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
-                <span>{post.tag}</span>
-                <span>{post.readTime}</span>
+        {/* Blog Grid */}
+        <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <Card
+              key={post.slug}
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow  border border-gray-200 duration-300 overflow-hidden p-0"
+            >
+              <div className="relative h-60 w-full">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
-              <h2 className="text-lg font-semibold text-cyan-800">
-                {post.title}
-              </h2>
-              <p className="text-sm text-gray-600 mt-2">{post.excerpt}</p>
-            </CardContent>
-            <CardFooter className="p-4">
-              <Button
-                asChild
-                size="lg"
-                className="button-gradient text-white group self-center bg-cyan-700 hover:bg-cyan-800"
-              >
-                <Link href={`/blog/${post.slug}`}>
-                  Read more
-                  <Image
-                    width={20}
-                    height={20}
-                    src="/svg/arrow_right_icon.svg"
-                    alt="Arrow right"
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </section>
-    </main>
-    <Footer />
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
+                  <span>{post.tag}</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h2 className="text-lg font-semibold text-cyan-800">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-gray-600 mt-2">{post.excerpt}</p>
+              </CardContent>
+              <CardFooter className="p-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="button-gradient text-white group self-center bg-cyan-700 hover:bg-cyan-800"
+                >
+                  <Link href={`/blog/${post.slug}`}>
+                    Read more
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/svg/arrow_right_icon.svg"
+                      alt="Arrow right"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </section>
+      </main>
+      <Footer />
     </>
   );
 }

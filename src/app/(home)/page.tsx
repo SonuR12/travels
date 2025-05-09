@@ -1,8 +1,4 @@
-
-import { HeroSection } from "@/components/home/hersoSection";
-import ImageSection from "@/components/home/ImageSection";
-import TestimonialsPage from "@/components/home/TestimonialsPage";
-import Footer from "@/components/shared/footer";
+import HomePage from "@/components/home/page";
 
 export const metadata = {
   title: "Bae Travels - Your Gateway to Adventure",
@@ -12,12 +8,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-  <div className="pt-16">
-  <HeroSection />
-  {/* <ContactForm /> */}
-  <ImageSection />
-  <TestimonialsPage />
-  <Footer/>
-  </div>
-);
+    <>
+      <HomePage />
+    </>
+  );
 }
