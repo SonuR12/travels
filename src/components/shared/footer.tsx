@@ -81,7 +81,7 @@ export default function Footer() {
 
         {/* Group: Quick Links + Get in Touch */}
         <div className="flex flex-col sm:flex-row gap-8 flex-2 justify-between w-full sm:w-auto">
-          {/* Quick Links */}
+          {/* Quick Links
           <div className="flex-1">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-1 text-cyan-200 text-sm">
@@ -97,7 +97,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div className="flex-1">
