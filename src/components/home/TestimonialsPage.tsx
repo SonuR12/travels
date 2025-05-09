@@ -5,8 +5,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "../ui/button";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const testimonials = [
   {
@@ -61,8 +59,8 @@ export default function TestimonialCarousel() {
     setIsClient(true);
   }, []);
 
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  // const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  // const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
 
   if (!isClient) return null;
 
@@ -96,7 +94,7 @@ export default function TestimonialCarousel() {
                     </div>
                   </div>
                   <p className="text-gray-700 dark:text-zinc-200 italic">
-                    "{t.review}"
+                    &quot;{t.review}&quot;
                   </p>
                 </div>
               </div>

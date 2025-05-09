@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Button } from "../ui/button";
 import Link from "next/link";

@@ -1,8 +1,6 @@
 "use client"
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { CheckCircle } from "lucide-react"
 import Image from "next/image"
 
 interface SuccessModalProps {

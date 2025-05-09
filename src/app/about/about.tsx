@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Loader from "@/components/ui/loader";
+import Image from "next/image";
 
 
 const AboutPage = () => {
@@ -65,11 +66,13 @@ const AboutPage = () => {
           <p className="text-muted-foreground text-lg">
             At <span className="font-bold text-cyan-700">Bae Travels</span>, our
             mission is to make travel accessible, enjoyable, and stress-free for
-            everyone. Whether you're planning a solo trip, romantic getaway, or
-            family vacation — we’ve got your back.
+            everyone. Whether you&apos;re planning a solo trip, romantic getaway, or
+            family vacation — we&apos;ve got your back.
           </p>
         </div>
-        <img
+        <Image
+        height={400}
+        width={400}
           src="/images/mission.jpg"
           alt="Mission"
           className="rounded-xl shadow-lg object-cover w-full h-[280px]"
@@ -110,10 +113,12 @@ const AboutPage = () => {
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[1, 2, 3, 4].map((id) => (
             <div key={id} className="flex flex-col items-center space-y-3">
-              <img
+              <Image
+              height={100}
+              width={100}
                 src={`/images/team${id}.jpg`}
                 alt={`Team member ${id}`}
-                className="w-28 h-28 object-cover rounded-full shadow-md"
+                className="w-28 h-28 object-cover rounded-full shadow-md flex justify-center items-center text-center"
               />
               <div>
                 <h4 className="font-semibold">Member {id}</h4>

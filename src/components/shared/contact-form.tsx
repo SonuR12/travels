@@ -52,7 +52,7 @@ export default function ContactForm() {
           </div>
           <CardTitle className="text-2xl font-bold">Contact Us</CardTitle>
           <CardDescription>
-            Have questions about your next adventure? We're here to help!
+            Have questions about your next adventure? We&apos;re here to help!
           </CardDescription>
         </CardHeader>
 

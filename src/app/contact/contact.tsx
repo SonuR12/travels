@@ -48,7 +48,7 @@ const ContactPage = () => {
           Get in Touch
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-zinc-300">
-          We'd love to hear from you. Send us a message or reach out using the
+          We&apos;d love to hear from you. Send us a message or reach out using the
           info below.
         </p>
       </div>
