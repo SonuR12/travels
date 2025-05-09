@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import type { Metadata } from "next"
 
-// Sample posts data
+// Sample posts data with expanded content for slug
 const posts = [
   {
     title: "Discover the Hidden Gems of India",
@@ -52,55 +52,74 @@ const posts = [
   },
 ]
 
-// Helper to get post by slug
+// Helper function to get post by slug
 const getPostBySlug = (slug: string) => {
   return posts.find((post) => post.slug === slug)
 }
 
-// Generate metadata for the page
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+// Generate metadata for the blog post
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getPostBySlug(params.slug)
 
+  // If post doesn't exist, return a default metadata
   if (!post) {
     return {
-      title: "Post Not Found | Bae Travels",
-      description: "This blog post could not be found.",
+      title: "Post Not Found | India Travel Blog",
+      description: "The requested blog post could not be found.",
     }
   }
 
   return {
-    title: `Blog | ${post.title}`,
+    title: `${post.title} | India Travel Blog`,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      tags: [post.tag],
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
   }
 }
 
-// Page component
-export default function Page({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug)
 
   if (!post) {
-    notFound() // Show 404
+    notFound() // Show a 404 page if the post is not found
   }
 
-  const suggestedPosts = posts.filter((p) => p.slug !== post.slug)
+  // Filter out the current post to display suggested posts
+  const suggestedPosts = posts.filter((suggestedPost) => suggestedPost.slug !== post.slug)
 
   return (
     <main className="px-4 md:px-12 py-12 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 min-h-screen">
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="relative mb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src={post.image || "/placeholder.svg?height=600&width=1200"}
+            src={post.image || "/placeholder.svg"}
             alt={post.title}
             fill
-            className="opacity-60 object-cover"
+            objectFit="cover"
+            className="opacity-60"
           />
         </div>
-        <div className="relative z-10 text-center text-black p-12">
+        <div className="relative z-10 text-center text-black">
           <h1 className="text-5xl font-extrabold">{post.title}</h1>
           <p className="mt-4 text-lg font-light">{post.excerpt}</p>
           <p className="mt-2 text-sm">
@@ -109,21 +128,19 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Blog Content */}
+      {/* Blog Content Section */}
       <section className="w-full space-y-8">
-        <Card className="bg-white rounded-xl shadow-lg overflow-hidden pt-6 border border-gray-200">
+        <Card className="bg-white rounded-xl shadow-lg overflow-hidden pt-6 p-0  border border-gray-200">
           <CardContent className="p-6">
             <div className="text-gray-800 leading-relaxed space-y-6">
+              {/* Fixed Image Container */}
               <div className="relative w-full h-96 rounded-lg overflow-hidden">
-                <Image
-                  src={post.image || "/placeholder.svg?height=600&width=1200"}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
               </div>
+
+              {/* Blog Content */}
               <p>{post.content}</p>
+
               <div className="mt-6">
                 <p className="text-lg font-semibold">Explore more:</p>
                 <ul className="list-disc pl-5">
@@ -134,10 +151,11 @@ export default function Page({ params }: { params: { slug: string } }) {
               </div>
             </div>
           </CardContent>
+
           <CardFooter className="p-4 bg-gray-100">
-            <Link href="/blog" className="text-cyan-600 font-medium hover:underline text-center block">
+            <a href={`/blog`} className="text-cyan-600 font-medium hover:underline text-center block">
               Back to all posts
-            </Link>
+            </a>
           </CardFooter>
         </Card>
       </section>
@@ -147,11 +165,11 @@ export default function Page({ params }: { params: { slug: string } }) {
         {suggestedPosts.map((post) => (
           <Card
             key={post.slug}
-            className="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-200 transition-shadow duration-300 overflow-hidden p-0 group"
+            className="bg-white rounded-xl shadow-sm hover:shadow-xl  border border-gray-200 transition-shadow duration-300 overflow-hidden p-0 group"
           >
             <div className="relative h-60 w-full">
               <Image
-                src={post.image || "/placeholder.svg?height=400&width=600"}
+                src={post.image || "/placeholder.svg"}
                 alt={post.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
