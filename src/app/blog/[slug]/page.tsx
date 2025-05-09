@@ -4,9 +4,15 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Metadata } from "next";
-import React from "react";
 
-// Sample posts data with expanded content for slug
+// ✅ Define PageProps for type safety
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+// Sample posts data
 const posts = [
   {
     title: "Discover the Hidden Gems of India",
@@ -56,17 +62,13 @@ const posts = [
   },
 ];
 
-// Helper function to get post by slug
+// Helper to get post by slug
 const getPostBySlug = (slug: string) => {
   return posts.find((post) => post.slug === slug);
 };
 
-// Metadata generation function
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+// ✅ Type-safe metadata generation
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
 
   if (!post) {
@@ -77,34 +79,24 @@ export async function generateMetadata({
   }
 
   return {
-    title: `Blog | ${post.title} `,
+    title: `Blog | ${post.title}`,
     description: post.excerpt,
   };
 }
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
+// ✅ Type-safe page component
 export default function BlogPostPage({ params }: PageProps) {
-  const { slug } = params;
-
   const post = getPostBySlug(params.slug);
 
   if (!post) {
-    notFound(); // Show a 404 page if the post is not found
+    notFound(); // Show 404
   }
 
-  // Filter out the current post to display suggested posts
-  const suggestedPosts = posts.filter(
-    (suggestedPost) => suggestedPost.slug !== post.slug
-  );
+  const suggestedPosts = posts.filter((p) => p.slug !== post.slug);
 
   return (
     <main className="px-4 md:px-12 py-12 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 min-h-screen">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative mb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -118,18 +110,15 @@ export default function BlogPostPage({ params }: PageProps) {
         <div className="relative z-10 text-center text-black">
           <h1 className="text-5xl font-extrabold">{post.title}</h1>
           <p className="mt-4 text-lg font-light">{post.excerpt}</p>
-          <p className="mt-2 text-sm">
-            {post.date} | {post.readTime}
-          </p>
+          <p className="mt-2 text-sm">{post.date} | {post.readTime}</p>
         </div>
       </section>
 
-      {/* Blog Content Section */}
+      {/* Blog Content */}
       <section className="w-full space-y-8">
-        <Card className="bg-white rounded-xl shadow-lg overflow-hidden pt-6 p-0  border border-gray-200">
+        <Card className="bg-white rounded-xl shadow-lg overflow-hidden pt-6 border border-gray-200">
           <CardContent className="p-6">
             <div className="text-gray-800 leading-relaxed space-y-6">
-              {/* Fixed Image Container */}
               <div className="relative w-full h-96 rounded-lg overflow-hidden">
                 <Image
                   src={post.image}
@@ -139,26 +128,17 @@ export default function BlogPostPage({ params }: PageProps) {
                   priority
                 />
               </div>
-
-              {/* Blog Content */}
               <p>{post.content}</p>
-
               <div className="mt-6">
                 <p className="text-lg font-semibold">Explore more:</p>
                 <ul className="list-disc pl-5">
                   <li>Discover the wonders of historical forts.</li>
-                  <li>
-                    Learn about ancient art forms still practiced in India.
-                  </li>
-                  <li>
-                    Experience the mesmerizing natural beauty of unexplored
-                    places.
-                  </li>
+                  <li>Learn about ancient art forms still practiced in India.</li>
+                  <li>Experience the mesmerizing natural beauty of unexplored places.</li>
                 </ul>
               </div>
             </div>
           </CardContent>
-
           <CardFooter className="p-4 bg-gray-100">
             <a
               href={`/blog`}
@@ -175,7 +155,7 @@ export default function BlogPostPage({ params }: PageProps) {
         {suggestedPosts.map((post) => (
           <Card
             key={post.slug}
-            className="bg-white rounded-xl shadow-sm hover:shadow-xl  border border-gray-200 transition-shadow duration-300 overflow-hidden p-0 group"
+            className="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-200 transition-shadow duration-300 overflow-hidden p-0 group"
           >
             <div className="relative h-60 w-full">
               <Image
