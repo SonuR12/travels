@@ -63,7 +63,7 @@ const getPostBySlug = (slug: string) => {
 // Metadata generation function
 export async function generateMetadata(
   { params }: { params: { slug: string } },
-  parent: ResolvingMetadata
+  // parent: ResolvingMetadata
 ): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
 
@@ -95,7 +95,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   return (
     <main className="px-4 md:px-12 py-12 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 min-h-screen">
       {/* Hero Section */}
-      <section className="relative mb-12 overflow-hidden">
+      {/* <section className="relative mb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={post.image}
@@ -107,12 +107,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
         <div className="relative z-10 text-center text-black">
           <h1 className="text-5xl font-extrabold">{post.title}</h1>
-          <p className="mt-4 text-lg font-light">{post.excerpt}</p>
-          <p className="mt-2 text-sm">
+          <p className="mt-4 text-lg font-bold">{post.excerpt}</p>
+          <p className="mt-2 text-sm font-bold">
             {post.date} | {post.readTime}
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Blog Content Section */}
       <section className="w-full space-y-8">
@@ -120,7 +120,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <CardContent className="p-6">
             <div className="text-gray-800 leading-relaxed space-y-6">
               {/* Fixed Image Container */}
-              <div className="relative w-full h-96 rounded-lg overflow-hidden">
+              <div className="relative w-full object-fit h-160 rounded-lg overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
