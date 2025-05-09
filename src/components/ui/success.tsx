@@ -4,11 +4,18 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import Image from "next/image"
 
 interface SuccessModalProps {
-  open: boolean
-  onClose: () => void
+  open: boolean;
+  onClose: () => void;
+  data: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    contactNo: string;
+    message: string;
+  };
 }
 
-export default function SuccessModal({ open, onClose }: SuccessModalProps) {
+export default function SuccessModal({ open, onClose, data }: SuccessModalProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="text-center flex flex-col items-center justify-center gap-2">
@@ -22,7 +29,7 @@ export default function SuccessModal({ open, onClose }: SuccessModalProps) {
         </DialogHeader>
 
         <p className="text-muted-foreground text-sm text-center">
-          We’ve received your message and will respond shortly 😊
+          We've received your message and will respond shortly 😊
         </p>
       </DialogContent>
     </Dialog>

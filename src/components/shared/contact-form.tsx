@@ -21,6 +21,7 @@ import { formSchema } from "@/lib/schema"
 import { send } from "@/lib/email"
 import SuccessModal from "../ui/success"
 
+
 export default function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [submittedData, setSubmittedData] = useState<z.infer<typeof formSchema> | null>(null)
