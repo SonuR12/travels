@@ -57,16 +57,11 @@ const getPostBySlug = (slug: string) => {
   return posts.find((post) => post.slug === slug)
 }
 
-// Define the correct params type
-type Params = {
-  slug: string
-}
-
 // Generate metadata for the page
 export async function generateMetadata({
   params,
 }: {
-  params: Params
+  params: { slug: string }
 }): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
 
@@ -83,12 +78,8 @@ export async function generateMetadata({
   }
 }
 
-// Page component with correct typing
-export default function BlogPostPage({
-  params,
-}: {
-  params: Params
-}) {
+// Page component
+export default function Page({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug)
 
   if (!post) {
@@ -102,7 +93,12 @@ export default function BlogPostPage({
       {/* Hero */}
       <section className="relative mb-12 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="opacity-60 object-cover" />
+          <Image
+            src={post.image || "/placeholder.svg?height=600&width=1200"}
+            alt={post.title}
+            fill
+            className="opacity-60 object-cover"
+          />
         </div>
         <div className="relative z-10 text-center text-black p-12">
           <h1 className="text-5xl font-extrabold">{post.title}</h1>
@@ -119,7 +115,13 @@ export default function BlogPostPage({
           <CardContent className="p-6">
             <div className="text-gray-800 leading-relaxed space-y-6">
               <div className="relative w-full h-96 rounded-lg overflow-hidden">
-                <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
+                <Image
+                  src={post.image || "/placeholder.svg?height=600&width=1200"}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
               <p>{post.content}</p>
               <div className="mt-6">
@@ -149,7 +151,7 @@ export default function BlogPostPage({
           >
             <div className="relative h-60 w-full">
               <Image
-                src={post.image || "/placeholder.svg"}
+                src={post.image || "/placeholder.svg?height=400&width=600"}
                 alt={post.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
