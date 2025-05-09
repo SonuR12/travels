@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 // Sample posts data with expanded content for slug
 const posts = [
