@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Metadata } from "next";
+import React from "react";
 
 // Sample posts data with expanded content for slug
 const posts = [
@@ -81,7 +82,15 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function BlogPostPage({ params }: PageProps) {
+  const { slug } = params;
+
   const post = getPostBySlug(params.slug);
 
   if (!post) {
