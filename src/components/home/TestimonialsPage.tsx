@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent } from "@/components/ui/card";
@@ -52,7 +52,9 @@ const autoplayOptions = {
 
 export default function TestimonialCarousel() {
   const plugin = useRef(Autoplay(autoplayOptions));
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [plugin.current]);
+  const [emblaRef, 
+    // emblaApi
+  ] = useEmblaCarousel({ loop: true }, [plugin.current]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
