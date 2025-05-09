@@ -111,6 +111,7 @@ export default function Footer() {
                     src={item.icon}
                     alt={item.alt}
                     className="inline-block"
+                    priority
                   />
                   {""}
                   <Link

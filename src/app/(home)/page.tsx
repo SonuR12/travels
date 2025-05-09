@@ -11,11 +11,11 @@ export const metadata = {
 
 export default function Home() {
   return (
-  <>
+  <div className="pt-16">
   <HeroSection />
   {/* <ContactForm /> */}
   <ImageSection />
   <TestimonialsPage /> 
-  </>
+  </div>
 );
 }

@@ -62,7 +62,7 @@ export default function BlogPage() {
   }
 
   return (
-    <main className="px-4 md:px-12 py-12 bg-gray-50 min-h-screen">
+    <main className="px-4 md:px-12 bg-gray-50 py-20 min-h-screen">
       {/* Hero */}
       <section className="text-left mb-12">
         <h1 className="text-4xl font-bold text-cyan-700">Bae Travels Blog</h1>
