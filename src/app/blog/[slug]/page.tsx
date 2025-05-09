@@ -176,101 +176,102 @@ export default function BlogPostPage() {
   const suggestedPosts = posts.filter((p) => p.slug !== slug);
 
   return (
-    <main className="bg-gradient-to-r from-purple-50 to-pink-50 p-10 pt-28">
-      {/* Main Blog Post */}
-      <Card className="mx-auto py-0 pb-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
-        {/* Header Image */}
-        <div className="relative h-160 w-full">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-0 p-8">
-            <h1 className="text-5xl font-bold text-white mb-4">{post.title}</h1>
-            <div className="flex items-center space-x-4 text-white/90">
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-              <span>•</span>
-              <span className="bg-white/20 px-3 py-1 rounded-full">{post.tag}</span>
-            </div>
-          </div>
+    <main className="bg-gradient-to-r from-purple-50 to-pink-50 pt-20 pb-10 px-4 sm:px-10">
+  {/* Main Blog Post */}
+  <Card className="mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden max-w-5xl p-0 border border-gray-200">
+    {/* Header Image */}
+    <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px]">
+      <Image
+        src={post.image}
+        alt={post.title}
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute bottom-0 p-4 sm:p-8">
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">{post.title}</h1>
+        <div className="flex flex-wrap gap-x-2 gap-y-1 items-center text-sm sm:text-base text-white/90">
+          <span>{post.date}</span>
+          <span>•</span>
+          <span>{post.readTime}</span>
+          <span>•</span>
+          <span className="bg-white/20 px-3 py-1 rounded-full">{post.tag}</span>
         </div>
+      </div>
+    </div>
 
-        {/* Content */}
-        <CardContent className="px-8 mt-6">
-          <div className="prose prose-lg max-w-none">
-            {post.head.map((section, index) => (
-              <div key={index} className="mb-6">
-                {section.title && <h2 className="text-xl font-bold mb-2">{section.title}</h2>}
-                {section.content && <p>{section.content}</p>}
-                {section.subhead && (
-                  <h3 className="mt-4 text-lg font-semibold text-gray-800">{section.subhead}</h3>
-                )}
-                {section.text && <p className="text-gray-600">{section.text}</p>}
-              </div>
-            ))}
+    {/* Content */}
+    <CardContent className="px-4 sm:px-8 mt-6">
+      <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
+        {post.head.map((section, index) => (
+          <div key={index} className="mb-6">
+            {section.title && <h2 className="text-lg sm:text-xl font-bold mb-2">{section.title}</h2>}
+            {section.content && <p>{section.content}</p>}
+            {section.subhead && (
+              <h3 className="mt-4 text-base sm:text-lg font-semibold text-gray-800">{section.subhead}</h3>
+            )}
+            {section.text && <p className="text-gray-600">{section.text}</p>}
           </div>
-        </CardContent>
+        ))}
+      </div>
+    </CardContent>
 
-        {/* Footer */}
-        <CardFooter className="p-4 px-7 bg-gray-100">
-          <Link
-            href={`/blog`}
-            className="text-cyan-600 font-medium hover:underline text-center block"
+    {/* Footer */}
+    <CardFooter className="p-4 px-6 bg-gray-100">
+      <Link
+        href={`/blog`}
+        className="text-cyan-600 font-medium hover:underline text-center sm:text-left block w-full"
+      >
+        Back to all posts
+      </Link>
+    </CardFooter>
+  </Card>
+
+  {/* Suggested Posts */}
+  <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+    {suggestedPosts.map((suggested) => (
+      <Card
+        key={suggested.slug}
+        className="group/card bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-200 transition-shadow duration-300 overflow-hidden p-0"
+      >
+        <div className="relative h-48 sm:h-60 w-full">
+          <Image
+            src={suggested.image}
+            alt={suggested.title}
+            fill
+            className="object-cover group-hover/card:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <CardContent className="px-4 py-2 sm:p-4 ">
+          <h2 className="text-base sm:text-lg font-semibold text-cyan-800">{suggested.title}</h2>
+          <p className="text-sm text-gray-600 mt-2">{suggested.excerpt}</p>
+        </CardContent>
+        <CardFooter className="sm:px-4 sm:pb-4 p-4">
+          <Button
+            asChild
+            size="lg"
+            className="text-white bg-cyan-700 hover:bg-cyan-800 w-full"
           >
-            Back to all posts
-          </Link>
+            <Link
+              href={`/blog/${suggested.slug}`}
+              className="flex items-center justify-center group/button"
+            >
+              Read more
+              <Image
+                width={20}
+                height={20}
+                src="/svg/arrow_right_icon.svg"
+                alt="Arrow right"
+                className="transition-transform duration-300 ml-2 group-hover/button:translate-x-1"
+              />
+            </Link>
+          </Button>
         </CardFooter>
       </Card>
+    ))}
+  </section>
+</main>
 
-      {/* Suggested Posts */}
-      <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        {suggestedPosts.map((suggested) => (
-          <Card
-            key={suggested.slug}
-            className="group/card bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-200 transition-shadow duration-300 overflow-hidden p-0"
-          >
-            <div className="relative h-60 w-full">
-              <Image
-                src={suggested.image}
-                alt={suggested.title}
-                fill
-                className="object-cover group-hover/card:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <CardContent className="p-4">
-              <h2 className="text-lg font-semibold text-cyan-800">{suggested.title}</h2>
-              <p className="text-sm text-gray-600 mt-2">{suggested.excerpt}</p>
-            </CardContent>
-            <CardFooter className="p-4">
-              <Button
-                asChild
-                size="lg"
-                className="text-white bg-cyan-700 hover:bg-cyan-800"
-              >
-                <Link
-                  href={`/blog/${suggested.slug}`}
-                  className="flex items-center group/button"
-                >
-                  Read more
-                  <Image
-                    width={20}
-                    height={20}
-                    src="/svg/arrow_right_icon.svg"
-                    alt="Arrow right"
-                    className="transition-transform duration-300 ml-2 group-hover/button:translate-x-1"
-                  />
-                </Link>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </section>
-    </main>
   );
 }

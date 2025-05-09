@@ -13,13 +13,15 @@ export const send = async (emailFormData: z.infer<typeof formSchema>) => {
       from: `Travel.com <${process.env.RESEND_FROM_EMAIL || "Your Name <you@yourdomain.com>"}>`, // Use a verified email address
       to: ["sonukumar9905757@gmail.com"], // Replace with the recipient's email
       subject: "New Contact Form Submission",
-      react: EmailTemplate({
-        firstName: emailFormData.firstName,
-        lastName: emailFormData.lastName,
-        email: emailFormData.email,
-        contactNo: emailFormData.contactNo,
-        message: emailFormData.message,
-      }),
+      react: await Promise.resolve(
+        EmailTemplate({
+          firstName: emailFormData.firstName,
+          lastName: emailFormData.lastName,
+          email: emailFormData.email,
+          contactNo: emailFormData.contactNo,
+          message: emailFormData.message,
+        })
+      ),
     });
 
     if (error) {
