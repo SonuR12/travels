@@ -15,12 +15,12 @@ export default function Footer() {
     { src: "/svg/linkedin.svg", alt: "LinkedIn", href: "https://linkedin.com" },
   ];
 
-  const link = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
-  ];
+  // const link = [
+  //   { href: "/", label: "Home" },
+  //   { href: "/about", label: "About" },
+  //   { href: "/blog", label: "Blog" },
+  //   { href: "/contact", label: "Contact" },
+  // ];
 
   const touch = [
     {
