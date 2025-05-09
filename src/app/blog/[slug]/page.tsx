@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 // Sample posts data with expanded content for slug
 const posts = [
@@ -62,8 +62,7 @@ const getPostBySlug = (slug: string) => {
 
 // Metadata generation function
 export async function generateMetadata(
-  { params }: { params: { slug: string } },
-  // parent: ResolvingMetadata
+  { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
 
@@ -80,7 +79,14 @@ export async function generateMetadata(
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+// Define the expected structure of the props
+interface BlogPostPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostBySlug(params.slug);
 
   if (!post) {
@@ -94,29 +100,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="px-4 md:px-12 py-12 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 min-h-screen">
-      {/* Hero Section */}
-      {/* <section className="relative mb-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={post.image}
-            alt={post.title}
-            layout="fill"
-            objectFit="cover"
-            className="opacity-60"
-          />
-        </div>
-        <div className="relative z-10 text-center text-black">
-          <h1 className="text-5xl font-extrabold">{post.title}</h1>
-          <p className="mt-4 text-lg font-bold">{post.excerpt}</p>
-          <p className="mt-2 text-sm font-bold">
-            {post.date} | {post.readTime}
-          </p>
-        </div>
-      </section> */}
-
       {/* Blog Content Section */}
       <section className="w-full space-y-8">
-        <Card className="bg-white rounded-xl shadow-lg overflow-hidden pt-6 p-0  border border-gray-200">
+        <Card className="bg-white rounded-xl shadow-lg overflow-hidden pt-6 p-0 border border-gray-200">
           <CardContent className="p-6">
             <div className="text-gray-800 leading-relaxed space-y-6">
               {/* Fixed Image Container */}
@@ -131,7 +117,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
 
               {/* Blog Content */}
-              <p>{post.content}</p>
+              <h1 className="text-3xl font-extrabold text-gray-900">{post.title}</h1>
+              <p className="mt-4 text-lg text-gray-600">{post.excerpt}</p>
+              <p className="mt-2 text-sm text-gray-500">
+                {post.date} | {post.readTime}
+              </p>
+              <p className="mt-6">{post.content}</p>
 
               <div className="mt-6">
                 <p className="text-lg font-semibold">Explore more:</p>
@@ -165,7 +156,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         {suggestedPosts.map((post) => (
           <Card
             key={post.slug}
-            className="bg-white rounded-xl shadow-sm hover:shadow-xl  border border-gray-200 transition-shadow duration-300 overflow-hidden p-0 group"
+            className="bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-200 transition-shadow duration-300 overflow-hidden p-0 group"
           >
             <div className="relative h-60 w-full">
               <Image
