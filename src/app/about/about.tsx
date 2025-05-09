@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Loader from "@/components/ui/loader";
 import Image from "next/image";
+import Footer from "@/components/shared/footer";
 
 
 const AboutPage = () => {
@@ -47,6 +48,7 @@ const AboutPage = () => {
   ];
 
   return (
+    <>
     <div className="w-full bg-white px-4 md:px-12 py-20 text-gray-800">
       {/* Header Section */}
       <div className="text-left max-w-3xl mb-12">
@@ -145,6 +147,8 @@ const AboutPage = () => {
         </Button>
       </section>
     </div>
+    <Footer />
+    </>
   );
 };
 

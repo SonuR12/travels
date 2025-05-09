@@ -17,7 +17,7 @@ type ImageData = {
 const images: ImageData[] = [
   { Image: "/carousal/taj.jpg", city: "Agra" },
   { Image: "/carousal/redfort.jpg", city: "Delhi" },
-  { Image: "/carousal/HawaMahal.jpg", city: "Rajasthan" },
+  // { Image: "/carousal/HawaMahal.jpg", city: "Rajasthan" },
   { Image: "/carousal/GoldenTemple.jpg", city: "Amritsar" },
   { Image: "/carousal/temple.jpg", city: "Andhra Pradesh" },
 ];

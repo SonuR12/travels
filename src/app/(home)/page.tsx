@@ -2,6 +2,7 @@
 import { HeroSection } from "@/components/home/hersoSection";
 import ImageSection from "@/components/home/ImageSection";
 import TestimonialsPage from "@/components/home/TestimonialsPage";
+import Footer from "@/components/shared/footer";
 
 export const metadata = {
   title: "Bae Travels - Your Gateway to Adventure",
@@ -15,7 +16,8 @@ export default function Home() {
   <HeroSection />
   {/* <ContactForm /> */}
   <ImageSection />
-  <TestimonialsPage /> 
+  <TestimonialsPage />
+  <Footer/>
   </div>
 );
 }

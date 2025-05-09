@@ -7,6 +7,7 @@ import ContactForm from "@/components/shared/contact-form";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/shared/footer";
 
 const ContactPage = () => {
   const [isLoading, setIsLoading] = useState(true); // Loading state
@@ -41,6 +42,7 @@ const ContactPage = () => {
   ];
 
   return (
+    <>
     <div className="w-full min-h-screen bg-white dark:bg-zinc-900 px-4 py-20 md:px-20 text-gray-800 dark:text-white">
       {/* Header */}
       <div className="text-left mb-12 max-w-2xl">
@@ -162,6 +164,8 @@ const ContactPage = () => {
         </Card>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

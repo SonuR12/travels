@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import Footer from "@/components/shared/footer";
 
 interface BlogSection {
   title?: string;
@@ -176,6 +177,7 @@ export default function BlogPostPage() {
   const suggestedPosts = posts.filter((p) => p.slug !== slug);
 
   return (
+    <>
     <main className="bg-gradient-to-r from-purple-50 to-pink-50 pt-20 pb-10 px-4 sm:px-10">
   {/* Main Blog Post */}
   <Card className="mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden max-w-5xl p-0 border border-gray-200">
@@ -272,6 +274,7 @@ export default function BlogPostPage() {
     ))}
   </section>
 </main>
-
+<Footer />
+</>
   );
 }

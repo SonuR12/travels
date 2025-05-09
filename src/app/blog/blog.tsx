@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/ui/loader"; // Import the Loader component
+import Footer from "@/components/shared/footer";
 
 const posts = [
   {
@@ -62,6 +63,7 @@ export default function BlogPage() {
   }
 
   return (
+    <>
     <main className="px-4 md:px-12 bg-gray-50 py-20 min-h-screen">
       {/* Hero */}
       <section className="text-left mb-12">
@@ -119,5 +121,7 @@ export default function BlogPage() {
         ))}
       </section>
     </main>
+    <Footer />
+    </>
   );
 }
