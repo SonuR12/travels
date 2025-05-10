@@ -1,12 +1,12 @@
-import emailjs from 'emailjs-com'
+import emailjs from "emailjs-com";
 
 type MailData = {
-  firstName: string
-  lastName: string
-  email: string
-  contactNo: string
-  message: string
-}
+  firstName: string;
+  lastName: string;
+  email: string;
+  contactNo: string;
+  message: string;
+};
 
 export const send = async (data: MailData) => {
   const templateParams = {
@@ -14,18 +14,22 @@ export const send = async (data: MailData) => {
     email: data.email,
     number: data.contactNo,
     message: data.message,
-  }
+  };
 
   try {
     const response = await emailjs.send(
-      'service_lia6mzb',           // Your EmailJS service ID
-      'template_eishv9t',          // Your EmailJS template ID
+      "service_lia6mzb", // Your EmailJS service ID
+      "template_eishv9t", // Your EmailJS template ID
       templateParams,
-      'm4pUhpIErQ8mMId_Z'          // Your EmailJS public key
-    )
-    return response
-  } catch (error: any) {  // You can specify the type of error (e.g., `any`)
-    console.error('Error sending email:', error.message || error);
+      "m4pUhpIErQ8mMId_Z" // Your EmailJS public key
+    );
+    return response;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Error sending email:", error.message);
+    } else {
+      console.error("Unknown error sending email:", error);
+    }
     throw new Error("Failed to send email");
   }
-}
+};
