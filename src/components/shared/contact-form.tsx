@@ -155,7 +155,7 @@ export default function ContactForm() {
             </CardContent>
 
             <CardFooter className="mt-5">
-              <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white">
+              <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 hover:cursor-pointer text-white">
                 Send Message
               </Button>
             </CardFooter>
