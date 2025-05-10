@@ -68,7 +68,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <Button
             asChild
-            className="text-cyan-700 bg-white border-1 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
+            className="text-cyan-700 bg-white border-1 border-cyan-700 px-5 py-2 text-sm font-semibold rounded-sm hover:bg-cyan-700 hover:text-white transition"
           >
             <Link href="/contact">Contact Us</Link>
           </Button>
@@ -88,7 +88,7 @@ export default function Navbar() {
               className="bg-white text-gray-900 w-64 p-6"
             >
               <SheetTitle className="sr-only">Navigation</SheetTitle>
-              <nav className="flex flex-col gap-6 mt-6">
+              <nav className="flex flex-col gap-4 mt-6">
                 {navItems.map(({ name, href }) => {
                   const isActive =
                     href === "/blog"
@@ -101,7 +101,7 @@ export default function Navbar() {
                       href={href}
                       onClick={handleNavClick}
                       className={clsx(
-                        "text-lg font-medium transition-colors duration-200",
+                        "text-[14px] font-medium transition-colors duration-200",
                         isActive ? "text-cyan-700" : "hover:text-cyan-700"
                       )}
                     >
@@ -114,7 +114,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={handleNavClick}
-                  className="text-cyan-700 text-center bg-white border-1 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
+                  className="text-cyan-700 text-center bg-white border-1 border-cyan-700 px-5 py-2 text-sm font-semibold rounded-sm hover:bg-cyan-700 hover:text-white transition"
                 >
                   Contact Us
                 </Link>
