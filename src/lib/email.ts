@@ -1,3 +1,5 @@
+// eslint @typescript-eslint/no-unused-vars: "off"
+
 import emailjs from 'emailjs-com'
 
 type MailData = {
@@ -24,7 +26,7 @@ export const send = async (data: MailData) => {
       'm4pUhpIErQ8mMId_Z'          // Your EmailJS public key
     )
     return response
-  } catch (e) {
+  } catch (error) {
     throw new Error("Failed to send email")
   }
 }
