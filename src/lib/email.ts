@@ -24,7 +24,7 @@ export const send = async (data: MailData) => {
       'm4pUhpIErQ8mMId_Z'          // Your EmailJS public key
     )
     return response
-  } catch (error: any) {  // You can specify the type of error (e.g., `any`)
+  } catch (error) {  // You can specify the type of error (e.g., `any`)
     console.error('Error sending email:', error.message || error);
     throw new Error("Failed to send email");
   }
