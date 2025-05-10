@@ -85,7 +85,7 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="bg-white text-gray-900 w-64 p-6"
+              className="bg-white text-gray-900 w-64 py-6 px-5"
             >
               <SheetTitle className="sr-only">Navigation</SheetTitle>
               <nav className="flex flex-col gap-4 mt-6">
