@@ -68,7 +68,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <Button
             asChild
-            className="text-cyan-700 bg-white border-2 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
+            className="text-cyan-700 bg-white border-1 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
           >
             <Link href="/contact">Contact Us</Link>
           </Button>
@@ -114,7 +114,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={handleNavClick}
-                  className="text-cyan-700 text-center bg-white border-2 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
+                  className="text-cyan-700 text-center bg-white border-1 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
                 >
                   Contact Us
                 </Link>
