@@ -55,7 +55,7 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   className={clsx(
-                    "transition-colors duration-200 hover:text-cyan-700",
+                    "transition-colors duration-200 hover:text-cyan-700 text-[15px]",
                     isActive ? "text-cyan-700" : "text-gray-800"
                   )}
                 >
@@ -66,12 +66,11 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <Button asChild className="bg-cyan-700 text-white px-5 py-2 text-sm font-semibold rounded-sm hover:bg-cyan-800 transition">
-          <Link
-            href="/contact"
+          <Button
+            asChild
+            className="text-cyan-700 bg-white border-2 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
           >
-            Contact Us
-          </Link>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
 
@@ -102,7 +101,7 @@ export default function Navbar() {
                       href={href}
                       onClick={handleNavClick}
                       className={clsx(
-                        "text-lg font-medium transition-colors duration-200",
+                        "text-[14px] font-medium transition-colors duration-200",
                         isActive ? "text-cyan-700" : "hover:text-cyan-700"
                       )}
                     >
@@ -112,13 +111,12 @@ export default function Navbar() {
                 })}
 
                 {/* Mobile CTA */}
-                <Link
-                  href="/contact"
-                  onClick={handleNavClick}
-                  className="mt-4 inline-block bg-cyan-700 text-white px-5 py-2 rounded-md text-center text-sm font-semibold hover:bg-purple-700 transition"
+                <Button
+                  asChild
+                  className="text-cyan-700 bg-white border-2 border-cyan-700 px-5 py-2 text-sm font-bold rounded-sm hover:bg-cyan-700 hover:text-white transition"
                 >
-                  Contact Us
-                </Link>
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>

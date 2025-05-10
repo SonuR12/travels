@@ -18,7 +18,7 @@ interface SuccessModalProps {
 export default function SuccessModal({ open, onClose}: SuccessModalProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="text-center flex flex-col items-center justify-center gap-2 bg-white">
+      <DialogContent className="text-center flex flex-col items-center justify-center gap-2 bg-white border border-gray-50">
         <DialogHeader>
           <div className="flex justify-center">
             <Image height={200} width={200} src='/images/success.jpg' alt="success" priority loading="eager" />

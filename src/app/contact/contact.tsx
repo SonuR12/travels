@@ -43,7 +43,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen bg-white dark:bg-zinc-900 px-4 py-20 md:px-20 text-gray-800 dark:text-white">
+      <div className="w-full min-h-screen bg-white dark:bg-zinc-900 px-4 py-22 md:px-6 lg:px-10 xl:px-20 text-gray-800 dark:text-white">
         {/* Header */}
         <div className="text-left mb-12 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-bold text-cyan-700 dark:text-cyan-400">

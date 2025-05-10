@@ -49,10 +49,10 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="w-full bg-white px-4 md:px-12 py-20 text-gray-800">
+      <div className="w-full bg-white px-4 md:px-12 py-22 text-gray-800">
         {/* Header Section */}
         <div className="text-left max-w-3xl mb-12">
-          <h1 className="text-5xl font-extrabold text-cyan-700">
+          <h1 className="text-4xl md:text-5xl font-bold text-cyan-700 dark:text-cyan-400">
             About Bae Travels
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">

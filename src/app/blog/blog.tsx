@@ -65,10 +65,10 @@ export default function BlogPage() {
 
   return (
     <>
-      <main className="px-4 md:px-12 bg-gray-50 py-20 min-h-screen">
+      <main className="px-4 md:px-12 bg-gray-50 py-22 min-h-screen">
         {/* Hero */}
         <section className="text-left mb-12">
-          <h1 className="text-4xl font-bold text-cyan-700">Bae Travels Blog</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-cyan-700 dark:text-cyan-400">Bae Travels Blog</h1>
           <p className="mt-4 text-gray-600 max-w-xl">
             Dive into inspiring stories, travel tips, and cultural discoveries
             from across India. Your next adventure starts here.
