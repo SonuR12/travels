@@ -21,7 +21,7 @@ export default function SuccessModal({ open, onClose}: SuccessModalProps) {
       <DialogContent className="text-center flex flex-col items-center justify-center gap-2 bg-white">
         <DialogHeader>
           <div className="flex justify-center">
-            <Image height={200} width={200} src='/images/success.jpg' alt="success" />
+            <Image height={200} width={200} src='/images/success.jpg' alt="success" priority loading="eager" />
           </div>
           <DialogTitle className="mt-2 text-xl font-semibold">
             Thank you for reaching out to us!
