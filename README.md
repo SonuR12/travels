@@ -17,6 +17,11 @@ It provides a clean, responsive, and fast user experience for browsing and booki
 
 ---
 
+## 📸 Screenshot
+![Image](https://github.com/SonuR12/travels/blob/main/public/Travel.png)
+
+---
+
 ## 📂 Folder Structure
 
 ```bash
